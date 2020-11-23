@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Text } from 'react-native';
 import BackButton from '../../../components/backbutton';
-import Background from '../../../components/container';
+import Background from '../../../components/backgrounds/home';
 
 const LoginScreen = ({navigation}) => (
     <Background>
