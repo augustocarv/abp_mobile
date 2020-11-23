@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import Background from '../../components/container/index';
-// import Logo from '../components/Logo';
+import Logo from '../components/logo.png';
 import Header from '../../components/header/index';
 import Button from '../../components/button/index';
 
 const HomeScreen = ({navigation}) => (
   <Background>
-    {/* <Logo /> */}
+    <Logo />
     <Header>Bem vindo ao FindBand!</Header>
 
     <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
