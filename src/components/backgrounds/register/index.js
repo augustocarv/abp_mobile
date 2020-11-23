@@ -2,11 +2,14 @@ import React, { memo } from 'react';
 import {
   StyleSheet,
   KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 
-
 const BackgroundRegister = ({ children }) => (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.select({
+        ios: 'padding',
+        android: null,
+    })}>
       {children}
     </KeyboardAvoidingView>
 );
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     width: '100%',
-    maxWidth: 340,
+    maxWidth: 600,
     alignSelf: 'center',
   },
 });
