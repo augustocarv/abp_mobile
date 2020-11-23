@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Background from '../../components/container/index';
+import Background from '../../components/backgrounds/home/index';
 import Logo from '../components/logo.png';
 import Header from '../../components/header/index';
 import Button from '../../components/button/index';
@@ -16,7 +16,7 @@ const HomeScreen = ({navigation}) => (
       mode="outlined"
       onPress={() => navigation.navigate('SignUpScreen')}
     >
-      Sign Up
+      Cadastro
     </Button>
   </Background>
 );
