@@ -31,7 +31,14 @@ const RegisterScreen = ({ navigation }) => {
                     name="cnpj"
                     style={{ marginTop: 10}}
                     value={cnpj}
+                    keyboardType="number-pad"
                     onChangeText={setCnpj}
+                    // render={props =>
+                    //     <TextInputMask
+                    //     {...props}
+                    //     mask="+[00] [000] [000] [000]"
+                    //   />
+                    // }
                 />
                 <TextInput
                     mode="flat"

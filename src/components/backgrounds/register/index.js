@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 import {
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform
+    StyleSheet,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView
 } from 'react-native';
 
 const BackgroundRegister = ({ children }) => (
@@ -10,18 +11,18 @@ const BackgroundRegister = ({ children }) => (
         ios: 'padding',
         android: null,
     })}>
-      {children}
+        {children}
     </KeyboardAvoidingView>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    width: '100%',
-    maxWidth: 600,
-    alignSelf: 'center',
-  },
+    container: {
+        flex: 1,
+        padding: 20,
+        width: '100%',
+        maxWidth: 600,
+        alignSelf: 'center',
+    },
 });
 
 export default memo(BackgroundRegister);
