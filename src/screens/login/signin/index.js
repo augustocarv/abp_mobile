@@ -20,7 +20,7 @@ const RegisterScreen = ({ navigation }) => {
                 <TextInput
                     mode="flat"
                     style={{ marginTop: 10, backgroundColor: 'white' }}
-                    label="Nome do Estabelecimento"
+                    label="Nome do Usuário"
                     name="name"
                     value={name}
                     onChangeText={setName}
