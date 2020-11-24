@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 const BackgroundRegister = ({ children }) => (
-    <KeyboardAvoidingView style={styles.container} behavior={Platform.select({
+    <KeyboardAvoidingView style={styles.container} enabled={false} behavior={Platform.select({
         ios: 'padding',
         android: null,
     })}>
