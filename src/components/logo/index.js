@@ -1,16 +1,16 @@
-// import React, { memo } from 'react';
-// import { Image, StyleSheet } from 'react-native';
+import React, { memo } from 'react';
+import { Image, StyleSheet } from 'react-native';
 
-// const Logo = () => (
-//   <Image source={require('../assets/logo.png')} style={styles.image} />
-// );
+const Logo = () => (
+  <Image source={require('../logo/logo.png')} style={styles.image} />
+);
 
-// const styles = StyleSheet.create({
-//   image: {
-//     width: 128,
-//     height: 128,
-//     marginBottom: 12,
-//   },
-// });
+const styles = StyleSheet.create({
+  image: {
+    textAlign: "center",
+    width: 220,
+    height: 60,
+  },
+});
 
-// export default memo(Logo);
+export default memo(Logo);

@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 
 
 const Header = ({ children }) => (
-  <Text style={styles.header}>{children}</Text>
+  <Text  style={styles.header}>{children}</Text>
 );
 
 const styles = StyleSheet.create({
