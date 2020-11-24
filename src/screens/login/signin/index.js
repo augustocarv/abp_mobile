@@ -19,7 +19,7 @@ const RegisterScreen = ({ navigation }) => {
             <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '25%' }}>
                 <TextInput
                     mode="flat"
-                    style={{ marginTop: 10}}
+                    style={{ marginTop: 10, backgroundColor: 'white' }}
                     label="Nome do Estabelecimento"
                     name="name"
                     value={name}
@@ -30,7 +30,7 @@ const RegisterScreen = ({ navigation }) => {
                     label="CNPJ"
                     name="cnpj"
                     maxLength={15}
-                    style={{ marginTop: 10}}
+                    style={{ marginTop: 10, backgroundColor: 'white' }}
                     value={cnpj}
                     keyboardType="number-pad"
                     onChangeText={setCnpj}
@@ -40,7 +40,7 @@ const RegisterScreen = ({ navigation }) => {
                     label="Senha"
                     secureTextEntry={true}
                     name="password"
-                    style={{ marginTop: 10 }}
+                    style={{ marginTop: 10, backgroundColor: 'white' }}
                     value={password}
                     onChangeText={setPassword}
                 />
