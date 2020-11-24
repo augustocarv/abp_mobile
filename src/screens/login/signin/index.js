@@ -8,21 +8,9 @@ import Background from '../../../components/backgrounds/register';
 import Button from '../../../components/button'
 
 const RegisterScreen = ({ navigation }) => {
-    const [infoRegister, setInfoRegister] = useState({
-        name: null,
-        cnpj: null,
-        password: null,
-    })
-
-    const handleChange = useCallback(
-        (event) => {
-            setInfoRegister({
-                ...infoRegister,
-                [event.target.name]: event.target.value
-            })
-        },
-        [],
-    )
+    const [name, setName] = useState(null)
+    const [cnpj, setCnpj] = useState(null)
+    const [password, setPassword] = useState(null)
 
     const styles = StyleSheet.create({
         text: {
@@ -35,8 +23,7 @@ const RegisterScreen = ({ navigation }) => {
           paddingVertical: 14,
         },
       });
-
-       console.log(infoRegister) 
+      
     return (
         <Background>
             <View>
@@ -52,28 +39,31 @@ const RegisterScreen = ({ navigation }) => {
             </View>
             <View>
                 <TextInput
-                    mode="outlined"
-                    style={{ marginTop: 10 }}
-                    label="Nome do Estabelecimento"
+                    mode="flat"
+                    style={{ marginTop: 10, backgroundColor: 'white' }}
+                    label="Nome do Usuário"
                     name="name"
-                    value={infoRegister.name}
-                    onChange={event => handleChange(event)}
+                    value={name}
+                    onChangeText={setName}
                 />
                 <TextInput
-                    mode="outlined"
+                    mode="flat"
                     label="CNPJ"
                     name="cnpj"
-                    style={{ marginTop: 10 }}
-                    value={infoRegister.cnpj}
-                    onChange={event => handleChange(event)}
+                    maxLength={15}
+                    style={{ marginTop: 10, backgroundColor: 'white' }}
+                    value={cnpj}
+                    keyboardType="number-pad"
+                    onChangeText={setCnpj}
                 />
                 <TextInput
-                    mode="outlined"
+                    mode="flat"
                     label="Senha"
+                    secureTextEntry={true}
                     name="password"
-                    style={{ marginTop: 10 }}
-                    value={infoRegister.password}
-                    onChange={event => handleChange(event)}
+                    style={{ marginTop: 10, backgroundColor: 'white' }}
+                    value={password}
+                    onChangeText={setPassword}
                 />
                 <Button mode="outlined" style={{ marginTop: 60 }} onPress={() => navigation.navigate('HomeScreen')}>
                     Cadastrar

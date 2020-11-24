@@ -1,16 +1,17 @@
 import React, { memo } from 'react';
 import {
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform
+    StyleSheet,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView
 } from 'react-native';
 
 const BackgroundRegister = ({ children }) => (
-    <KeyboardAvoidingView style={styles.container} behavior={Platform.select({
+    <KeyboardAvoidingView style={styles.container} enabled={false} behavior={Platform.select({
         ios: 'padding',
         android: null,
     })}>
-      {children}
+        {children}
     </KeyboardAvoidingView>
 );
 
