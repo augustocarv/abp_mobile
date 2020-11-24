@@ -34,8 +34,8 @@ const LoginScreen = ({ navigation }) => {
                     value={password}
                     onChangeText={setPassword}
                 />
-                <Button mode="outlined" style={{ marginTop: 60 }} onPress={() => navigation.navigate('HomeScreen')}>
-                    Cadastrar
+                <Button mode="contained" style={{ marginTop: 60 }} onPress={() => navigation.navigate('HomeScreen')}>
+                    Login
                 </Button>
             </View>
         </Background>
