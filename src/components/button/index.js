@@ -7,7 +7,7 @@ const Button = ({ mode, style, children, ...props }) => (
   <PaperButton
     style={[
       styles.button,
-      mode === 'outlined' && { backgroundColor: '#9d1dff', borderColor:'#9d1dff' },
+      mode === 'outlined' && { backgroundColor: '#7113FF', borderColor:'#7113FF' },
       style,
     ]}
     labelStyle={styles.text}
@@ -20,6 +20,7 @@ const Button = ({ mode, style, children, ...props }) => (
 
 const styles = StyleSheet.create({
   button: {
+    borderRadius: 20,
     width: '100%',
     marginVertical: 10,
   },
