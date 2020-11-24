@@ -3,7 +3,6 @@ import { View, Text, StyleSheet  } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import BackButton from '../../../components/backbutton';
 import Logo from '../../../components/logo/index'
-import Header from '../../../components/header';
 import Background from '../../../components/backgrounds/register';
 import Button from '../../../components/button'
 
@@ -23,7 +22,7 @@ const RegisterScreen = ({ navigation }) => {
           paddingVertical: 14,
         },
       });
-      
+
     return (
         <Background>
             <View>
