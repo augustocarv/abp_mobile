@@ -39,9 +39,11 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <View>
                 <TextInput
-                    mode="flat"
+                    mode="outlined"
                     style={{ marginTop: 10, backgroundColor: 'white' }}
                     label="Username"
+                    type="outlined"
+                    selectionColor="white"
                     name="name"
                     value={name}
                     onChangeText={setName}
