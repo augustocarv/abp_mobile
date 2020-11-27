@@ -98,7 +98,7 @@ const CalendarScreen = ({ navigation }) => {
         markedDates={{
           [selected]: {
             selected: true,
-            disableTouchEvent: true,
+            disableTouchEvent: false,
             selectedColor: "#7113FF",
             selectedTextColor: "white",
           },
