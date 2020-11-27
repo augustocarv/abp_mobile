@@ -7,7 +7,6 @@ const Logo = () => (
 
 const styles = StyleSheet.create({
   image: {
-    textAlign: "center",
     width: 220,
     height: 60,
   },

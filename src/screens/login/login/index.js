@@ -16,12 +16,12 @@ const LoginScreen = ({ navigation }) => {
     const onSubmit = useCallback(
         async () => {
             try {
-                const result = await userService.login({
-                    name,
-                    password
-                })
-                AsyncStorage.setItem('token', result.data.token)
-                navigation.navigate('ScheduleScreen')
+                // const result = await userService.login({
+                //     name,
+                //     password
+                // })
+                // await AsyncStorage.setItem('token', result.data.token)
+                navigation.navigate('CalendarScreen')
 
             } catch (error) {
                 alert(error.response.data)
