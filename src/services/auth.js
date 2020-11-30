@@ -1,6 +1,6 @@
 import axios from "axios";
 import api from "./api";
-class UserLogin {
+class AuthLogin {
 
     async register(body) {
         return api.post(`api/auth/register`, body)
@@ -10,4 +10,4 @@ class UserLogin {
     }
 }
 
-export const userLoginService = new UserLogin();
+export const authService = new AuthLogin();

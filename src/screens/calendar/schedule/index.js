@@ -1,10 +1,12 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { Card, Button } from "react-native-paper";
 import ButtonBack from "../../../components/backbutton";
 import moment from "moment";
 import AppBar from "../../../components/appbar";
+import { establishmentService } from '../../../services/establishment'
 const ScheduleScreen = ({ route, navigation }) => {
+  const { date } = route.params;
   const [shows, setShows] = useState([
     // {
     //   band: "Djávu",
@@ -25,10 +27,30 @@ const ScheduleScreen = ({ route, navigation }) => {
     },
     [],
   )
-  const { date } = route.params;
+  const onInit = useCallback(
+    async () => {
+      try {
+        const establishment = await establishmentService.getProfile()
+        const query = {
+          estabelecimentoId: establishment.id,
+          data: moment(data).format()
+        }
+
+        const result = await establishmentService.getShowsByDate(query)
+        setShows(result.data)
+
+      } catch (error) {
+
+      }
+    },
+    [],
+  )
+  useEffect(() => {
+    onInit()
+  }, [onInit])
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <AppBar add={true} onAdd={onAdd} navigation={navigation}/>
+      <AppBar add={true} onAdd={onAdd} navigation={navigation} />
       <View style={{ marginTop: 10 }}>
         <Text style={{ margin: 30, color: "white", fontSize: 20 }}>
           {moment(date).format("LL")}
@@ -49,7 +71,6 @@ const ScheduleScreen = ({ route, navigation }) => {
                     {item.hourStart} às {item.hourFinish}
                   </Text>
                 }
-                s
               />
               <Card.Content>
                 <Text style={{ color: "white", fontSize: 14 }}>
@@ -59,17 +80,17 @@ const ScheduleScreen = ({ route, navigation }) => {
             </Card>
           ))
         ) : (
-          <Text
-            style={{
-              color: "white",
-              fontSize: 17,
-              alignSelf: "center",
-              fontWeight: "bold",
-            }}
-          >
-            Sem shows para hoje :(
-          </Text>
-        )}
+            <Text
+              style={{
+                color: "white",
+                fontSize: 17,
+                alignSelf: "center",
+                fontWeight: "bold",
+              }}
+            >
+              Sem shows para hoje :(
+            </Text>
+          )}
       </View>
     </ScrollView>
   );

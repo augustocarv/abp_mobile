@@ -7,7 +7,8 @@ import LoginScreen from '../screens/login/login';
 import SignIn from '../screens/login/signin';
 import CalendarScreen from '../screens/calendar';
 import ScheduleScreen from '../screens/calendar/schedule/index'
-import FindScreen from '../screens/find'
+import FindScreen from '../screens/search'
+import ProfileScreen from '../screens/profile'
 const Stack = createStackNavigator();
 
 function Routes() {
@@ -26,6 +27,7 @@ function Routes() {
                 <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
                 <Stack.Screen name="ScheduleScreen" component={ScheduleScreen} />
                 <Stack.Screen name="FindScreen" component={FindScreen} />
+                <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { AsyncStorage } from "react-native";
 import api from "./api";
 class User {
 
@@ -13,6 +14,9 @@ class User {
     }
     async searchBand(query) {
         return api.get(`api/banda/search`, query)
+    }
+    async getUser(){
+        return AsyncStorage.getItem('User')
     }
 
 }

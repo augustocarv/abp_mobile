@@ -1,30 +1,32 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { Card, Searchbar } from "react-native-paper";
 import AppBar from "../../components/appbar";
-import ButtonBack from "../../components/backbutton";
+import { bandService } from "../../services/band";
 
 const FindScreen = ({ route, navigation }) => {
-  const [shows, setShows] = useState([
-    // {
-    //   band: "Djávu",
-    //   hourStart: '19h:00',
-    //   hourFinish: '22h:00',
-    //   style:'Sertanejo'
-    // },
-    // {
-    //   band: "Calcinha Preta",
-    //   hourStart: '18h:00',
-    //   hourFinish: '19h:00',
-    //   style:'MBP'
-    // },
-  ]);
+  const [search, setSearch] = useState('');
+  const [shows, setShows] = useState([])
+
+
+  const onChange = useCallback(async (value) => {
+    try {
+      const query = {
+        nome: value
+      }
+      const result = await bandService.search(query)
+      setShows(result.data)
+    } catch (error) {
+
+    }
+  }, [])
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <AppBar onlyGoBack={true} navigation={navigation}/>
+      <AppBar onlyGoBack={true} navigation={navigation} />
       <View style={{ marginTop: 10 }}>
         <View style={{ margin: 30, color: "white", fontSize: 20 }}>
-          <Searchbar placeholder="Search" />
+          <Searchbar placeholder="Search" value={search} onChangeText={value => onChange(value)} />
         </View>
         {shows.map((item) => (
           <Card

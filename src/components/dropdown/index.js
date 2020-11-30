@@ -1,24 +1,33 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { Button, Menu, Divider, Provider } from 'react-native-paper';
+import * as React from "react";
+import { View, Text, AsyncStorage } from "react-native";
+import { Button, Menu, Divider, Provider } from "react-native-paper";
 
-const Dropdown = () => {
+const Dropdown = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
 
   const openMenu = () => setVisible(true);
 
   const closeMenu = () => setVisible(false);
 
+  const onLogout = React.useCallback(() => {
+    AsyncStorage.clear();
+    navigation.navigate("HomeScreen");
+    setVisible(false)
+  }, []);
+
   return (
-        <Menu
-          visible={visible}
-          onDismiss={closeMenu}
-          anchor={<Text style={{ marginTop: 25 }} onPress={openMenu}>Avatar</Text>}>
-          <Menu.Item onPress={() => {}} title="Perfil" />
-          <Menu.Item onPress={() => {}} title="Navegar" />
-          <Divider />
-          <Menu.Item onPress={() => {}} title="Logout" />
-        </Menu>
+    <Menu
+      visible={visible}
+      onDismiss={closeMenu}
+      anchor={
+        <Text style={{ marginTop: 25 }} onPress={openMenu}>
+          Avatar
+        </Text>
+      }
+    >
+      <Menu.Item onPress={() => [navigation.navigate("ProfileScreen"), setVisible(false)]} title="Perfil" />
+      <Menu.Item onPress={onLogout} title="Logout" />
+    </Menu>
   );
 };
 

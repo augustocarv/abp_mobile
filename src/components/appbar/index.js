@@ -38,7 +38,7 @@ const AppBar = ({ home, add, navigation, onAdd, onlyGoBack }) => {
             </Text>
           ) : (
             <>
-            <Dropdown />
+            <Dropdown navigation={navigation} />
             </>
           )}
         </>

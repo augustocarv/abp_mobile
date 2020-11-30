@@ -6,7 +6,7 @@ import Header from '../../../components/header';
 import Logo from '../../../components/logo/index'
 import Background from '../../../components/backgrounds/register';
 import Button from '../../../components/button'
-import { userLoginService } from '../../../services/userLogin';
+import { authService } from '../../../services/auth';
 
 
 const LoginScreen = ({ navigation }) => {
@@ -20,7 +20,8 @@ const LoginScreen = ({ navigation }) => {
                 //     name,
                 //     password
                 // })
-                // await AsyncStorage.setItem('token', result.data.token)
+                const body = {role: 0, username: 'Teste'}
+                await AsyncStorage.setItem('User', JSON.stringify(body))
                 navigation.navigate('CalendarScreen')
 
             } catch (error) {
