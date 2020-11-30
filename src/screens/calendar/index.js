@@ -9,6 +9,7 @@ import {
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Card } from "react-native-paper";
 import moment from "moment";
+import AppBar from "../../components/appbar";
 LocaleConfig.locales["pt-br"] = {
   monthNames: [
     "Janeiro",
@@ -63,6 +64,7 @@ const CalendarScreen = ({ navigation }) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} testID={"menu"}>
+      <AppBar home={true} navigation={navigation}/>
       <Calendar
         testID={"first_calendar"}
         current={moment(new Date()).format("YYYY-MM-DD")}
@@ -129,7 +131,7 @@ export default CalendarScreen;
 
 const styles = StyleSheet.create({
   calendar: {
-    marginTop: 80,
+    marginTop: 10,
     margin: 10,
     marginBottom: 10,
     backgroundColor: "#404040",

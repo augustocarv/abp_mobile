@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { Card, Button } from "react-native-paper";
 import ButtonBack from "../../../components/backbutton";
 import moment from "moment";
+import AppBar from "../../../components/appbar";
 const ScheduleScreen = ({ route, navigation }) => {
   const [shows, setShows] = useState([
     // {
@@ -18,27 +19,17 @@ const ScheduleScreen = ({ route, navigation }) => {
     //   style:'MBP'
     // },
   ]);
+  const onAdd = useCallback(
+    () => {
+      navigation.navigate('FindScreen')
+    },
+    [],
+  )
   const { date } = route.params;
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <ButtonBack goBack={navigation.goBack} />
-      <View
-        style={{
-          marginTop: 20,
-          alignSelf:'flex-end'
-        }}
-      >
-        <Button
-          mode="text"
-          style={{ width: "50%", backgroundColor:'transparent' }}
-          onPress={() => navigation.navigate('FindScreen')}
-        >
-          <Text style={{ color:'white' }}>
-          Procurar Banda
-          </Text>
-        </Button>
-      </View>
-      <View style={{ marginTop: 50 }}>
+      <AppBar add={true} onAdd={onAdd} navigation={navigation}/>
+      <View style={{ marginTop: 10 }}>
         <Text style={{ margin: 30, color: "white", fontSize: 20 }}>
           {moment(date).format("LL")}
         </Text>
@@ -88,7 +79,7 @@ export default ScheduleScreen;
 
 const styles = StyleSheet.create({
   calendar: {
-    marginTop: 80,
+    marginTop: 10,
     margin: 10,
     marginBottom: 10,
     backgroundColor: "#404040",

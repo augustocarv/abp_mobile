@@ -1,12 +1,13 @@
 import axios from "axios";
+import api from "./api";
 class UserLogin {
 
     async register(body) {
-        return axios.post(`api/register`, body)
+        return api.post(`api/auth/register`, body)
     }
     async login(body) {
-        return axios.post(`api/signin`, body)
+        return api.post(`api/auth/login`, body)
     }
 }
 
-export const userService = new UserLogin();
+export const userLoginService = new UserLogin();

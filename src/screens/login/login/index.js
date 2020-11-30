@@ -6,7 +6,7 @@ import Header from '../../../components/header';
 import Logo from '../../../components/logo/index'
 import Background from '../../../components/backgrounds/register';
 import Button from '../../../components/button'
-import { userService } from '../../../services/userLogin';
+import { userLoginService } from '../../../services/userLogin';
 
 
 const LoginScreen = ({ navigation }) => {
@@ -16,7 +16,7 @@ const LoginScreen = ({ navigation }) => {
     const onSubmit = useCallback(
         async () => {
             try {
-                // const result = await userService.login({
+                // const result = await userLoginService.login({
                 //     name,
                 //     password
                 // })

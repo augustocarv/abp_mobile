@@ -5,7 +5,7 @@ import BackButton from '../../../components/backbutton';
 import Logo from '../../../components/logo/index'
 import Background from '../../../components/backgrounds/register';
 import Button from '../../../components/button'
-import { userService } from '../../../services/userLogin';
+import { userLoginService } from '../../../services/userLogin';
 import Alert from '../../../components/snackbar'
 
 const RegisterScreen = ({ navigation }) => {
@@ -28,7 +28,7 @@ const RegisterScreen = ({ navigation }) => {
     const onSubmit = useCallback(
         async () => {
             try {
-                // await userService.register({
+                // await userLoginService.register({
                 //     name,
                 //     cnpj,
                 //     password

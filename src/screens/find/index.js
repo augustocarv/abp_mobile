@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { Card, Searchbar } from "react-native-paper";
+import AppBar from "../../components/appbar";
 import ButtonBack from "../../components/backbutton";
 
 const FindScreen = ({ route, navigation }) => {
@@ -20,8 +21,8 @@ const FindScreen = ({ route, navigation }) => {
   ]);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <ButtonBack goBack={navigation.goBack} />
-      <View style={{ marginTop: 50 }}>
+      <AppBar onlyGoBack={true} navigation={navigation}/>
+      <View style={{ marginTop: 10 }}>
         <View style={{ margin: 30, color: "white", fontSize: 20 }}>
           <Searchbar placeholder="Search" />
         </View>
