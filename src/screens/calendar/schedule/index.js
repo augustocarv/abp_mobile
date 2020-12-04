@@ -36,7 +36,7 @@ const ScheduleScreen = ({ route, navigation }) => {
   );
   const onAdd = useCallback(
     () => {
-      navigation.navigate('Find')
+      navigation.navigate('Find', { date: date })
     },
     [],
   )

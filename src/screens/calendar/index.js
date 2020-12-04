@@ -84,6 +84,7 @@ const CalendarScreen = ({ navigation }) => {
   useEffect(() => {
     onInit()
     nav.setOptions({
+      headerLeft: () => (<></>),
       headerRight: () => <Dropdown navigation={navigation}/>,
     });
   }, [onInit])

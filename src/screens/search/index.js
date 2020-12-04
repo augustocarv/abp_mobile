@@ -1,13 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { Card, Searchbar, TextInput } from "react-native-paper";
-import AppBar from "../../components/appbar";
+import moment from 'moment'
 import { bandService } from "../../services/band";
 import Button from '../../components/button'
 const FindScreen = ({ route, navigation }) => {
   const [search, setSearch] = useState('');
   const [hour, setHour] = useState(null)
   const [dataFim, setDataFim] = useState(null)
+  const { date } = route.params;
   const [bands, setBands] = useState([
     {
       band: "Djávu",
@@ -46,6 +47,9 @@ const FindScreen = ({ route, navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{ marginTop: 10 }}>
+      <Text style={{ margin: 30, color: "white", fontSize: 20 }}>
+          {moment(date).format("LL")}
+        </Text>
         <View style={{ display: 'flex', flexDirection:'row', margin: 30, color: "white", fontSize: 20 }}>
         <TextInput
           mode="flat"
