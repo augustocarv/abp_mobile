@@ -20,7 +20,7 @@ const Dropdown = ({ navigation }) => {
       visible={visible}
       onDismiss={closeMenu}
       anchor={
-        <Text style={{ marginTop: 25 }} onPress={openMenu}>
+        <Text style={{ marginTop: 25, color:'white' }} onPress={openMenu}>
           Avatar
         </Text>
       }

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -10,6 +10,7 @@ import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Card } from "react-native-paper";
 import moment from "moment";
 import AppBar from "../../components/appbar";
+import { userService } from "../../services/user";
 LocaleConfig.locales["pt-br"] = {
   monthNames: [
     "Janeiro",
@@ -56,15 +57,32 @@ LocaleConfig.defaultLocale = "pt-br";
 
 const CalendarScreen = ({ navigation }) => {
   const [selected, setSelected] = useState("");
+  const [dates, setDates] = useState([])
+  const onDayPress = useCallback(
+    (day) => {
+      setSelected(day.dateString);
+      navigation.navigate(`ScheduleScreen`, { date: day.dateString });
+    },
+    [])
+  const onInit = useCallback(
+    () => {
+      try {
+        // const result = userService.getAgenda()
+        // setDates(result.data)
+      }
+      catch (err) {
 
-  const onDayPress = (day) => {
-    setSelected(day.dateString);
-    navigation.navigate(`ScheduleScreen`, { date: day.dateString });
-  };
+      }
+    },
+    [])
+
+  useEffect(() => {
+    onInit()
+  }, [onInit])
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} testID={"menu"}>
-      <AppBar home={true} navigation={navigation}/>
+      <AppBar home={true} navigation={navigation} />
       <Calendar
         testID={"first_calendar"}
         current={moment(new Date()).format("YYYY-MM-DD")}
@@ -118,8 +136,14 @@ const CalendarScreen = ({ navigation }) => {
           <Card.Title
             title={<Text style={{ color: "white" }}>Resumo do Mês</Text>}
           />
-          <Card.Content>
-            <Text> </Text>
+          <Card.Content style={{marginBottom: 25}}>
+            <ScrollView style={{padding: 10}}>
+            {/* {dates.map((item) => (
+              <Text style={{color:'white', margin: 15, fontSize: 18}}>{item.nome}</Text>
+            ))} */}
+            <Text style={{color:'white', margin: 15, fontSize: 18}}>Banda Djavu</Text>
+            <Text style={{color:'white', margin: 15, fontSize: 18}}>Calcinha Preta</Text>
+            </ScrollView>
           </Card.Content>
         </Card>
       </View>

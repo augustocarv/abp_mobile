@@ -20,8 +20,8 @@ const LoginScreen = ({ navigation }) => {
                 //     name,
                 //     password
                 // })
-                const body = {role: 0, username: 'Teste'}
-                await AsyncStorage.setItem('User', JSON.stringify(body))
+                // const body = {role: 0, username: 'Teste'}
+                // await AsyncStorage.setItem('token', result.data.token)
                 navigation.navigate('CalendarScreen')
 
             } catch (error) {

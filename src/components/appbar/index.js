@@ -3,7 +3,8 @@ import { StyleSheet, View, Text } from "react-native";
 import Dropdown from "../dropdown";
 
 const AppBar = ({ home, add, navigation, onAdd, onlyGoBack }) => {
-  const [ openDropdown, setOpenDropdown] = React.useState(false)
+  const [openDropdown, setOpenDropdown] = React.useState(false)
+  const [roleUser, setRole] = React.useState(1)
   return (
     <View
       style={{
@@ -17,32 +18,35 @@ const AppBar = ({ home, add, navigation, onAdd, onlyGoBack }) => {
       }}
     >
       {onlyGoBack ? (
-        <Text style={{ marginTop: 25 }} onPress={navigation.goBack}>
+        <Text style={{ marginTop: 25, color:'white' }} onPress={navigation.goBack}>
           Voltar
         </Text>
       ) : (
-        <>
-          {home ? (
-            <Text style={{ marginTop: 25 }}>
-              Home
+          <>
+            {home ? (
+              <Text style={{ marginTop: 25, color:'white' }}>
+                Home
+              </Text>
+            ) : (
+                <Text style={{ marginTop: 25, color:'white' }} onPress={navigation.goBack}>
+                  Voltar
+                </Text>
+              )}
+            <Text style={{ marginTop: 25, color:'white' }}>FindBand</Text>
+            {add ? (
+              roleUser === 1 ?
+                <Text style={{ marginTop: 25, color:'white' }} onPress={onAdd}>
+                  Adicionar
             </Text>
-          ) : (
-            <Text style={{ marginTop: 25 }} onPress={navigation.goBack}>
-              Voltar
-            </Text>
-          )}
-          <Text style={{ marginTop: 25 }}>Logo</Text>
-          {add ? (
-            <Text style={{ marginTop: 25 }} onPress={onAdd}>
-              Plus
-            </Text>
-          ) : (
-            <>
-            <Dropdown navigation={navigation} />
-            </>
-          )}
-        </>
-      )}
+                : <Text style={{ marginTop: 25, color:'white' }} onPress={onAdd}>
+                </Text>
+            ) : (
+                <>
+                  <Dropdown navigation={navigation} />
+                </>
+              )}
+          </>
+        )}
     </View>
   );
 };

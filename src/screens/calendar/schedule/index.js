@@ -7,20 +7,30 @@ import AppBar from "../../../components/appbar";
 import { establishmentService } from '../../../services/establishment'
 const ScheduleScreen = ({ route, navigation }) => {
   const { date } = route.params;
-  const [shows, setShows] = useState([
-    // {
-    //   band: "Djávu",
-    //   hourStart: '19h:00',
-    //   hourFinish: '22h:00',
-    //   style:'Sertanejo'
-    // },
-    // {
-    //   band: "Calcinha Preta",
-    //   hourStart: '18h:00',
-    //   hourFinish: '19h:00',
-    //   style:'MBP'
-    // },
-  ]);
+  const role = 0
+  const [shows, setShows] = useState(moment(date).format("LL") === moment(new Date()).format("LL") ? role === 1 ?
+    [
+      {
+        band: "Estabelecimento Kakuss",
+        hourStart: '19h:00',
+        hourFinish: '22h:00',
+      },
+    ] :
+    [
+      {
+        band: "Djávu",
+        hourStart: '19h:00',
+        hourFinish: '22h:00',
+        style:'Sertanejo'
+      },
+      {
+        band: "Calcinha Preta",
+        hourStart: '18h:00',
+        hourFinish: '19h:00',
+        style:'MBP'
+      },
+    ] : []
+    );
   const onAdd = useCallback(
     () => {
       navigation.navigate('FindScreen')

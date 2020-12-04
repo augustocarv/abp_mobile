@@ -29,16 +29,16 @@ const RegisterScreen = ({ navigation }) => {
   });
   const onSubmit = useCallback(async () => {
     try {
-      // await userLoginService.register({
-      //     name,
-      //     cnpj,
-      //     password
-      // })
-      setAlert(true);
-
+      const body = {
+        username: name,
+        password: password,
+        role: role
+      }
+      const result = await authService.register(body)
+      console.log(result)
       navigation.navigate("LoginScreen");
     } catch (error) {
-      alert(error.response.data);
+      console.log(error)
     }
   }, []);
 
@@ -76,11 +76,11 @@ const RegisterScreen = ({ navigation }) => {
         <View style={{ marginTop: 25 }}>
           <RadioButton.Group
             onValueChange={(value) => setRole(value)}
-            style={{color:'white'}}
+            style={{ color: 'white' }}
             value={role}
           >
-            <RadioButton.Item status={role === 0 ? "checked" : "unchecked"} color="white" labelStyle={{color:'white'}} label="Estabelecimento" value={0} />
-            <RadioButton.Item status={role === 1 ? "checked" : "unchecked"} color="white" labelStyle={{color:'white'}} label="Banda" value={1} />
+            <RadioButton.Item status={role === 0 ? "checked" : "unchecked"} color="white" labelStyle={{ color: 'white' }} label="Estabelecimento" value={0} />
+            <RadioButton.Item status={role === 1 ? "checked" : "unchecked"} color="white" labelStyle={{ color: 'white' }} label="Banda" value={1} />
           </RadioButton.Group>
         </View>
         <Button

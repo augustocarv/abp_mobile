@@ -43,7 +43,7 @@ const BandProfile = ({ navigation }) => {
   const editMembers = useCallback((value, index) => {
     integrantes[index]["nome"] = value;
     setIntegrantes([...integrantes]);
-  }, []);
+  }, [integrantes]);
 
   const addMembers = useCallback(async () => {
     let array = [];
@@ -130,7 +130,7 @@ const BandProfile = ({ navigation }) => {
         </View>
         <View style={{ marginTop: 10, marginBottom: 10 }}>
           {integrantes.map((item, index) => (
-            <View style={{display:'flex', flexDirection:'row'}}>
+            <View key={index} style={{display:'flex', flexDirection:'row'}}>
               <TextInput
                 mode="flat"
                 key={index}

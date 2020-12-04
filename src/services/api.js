@@ -1,29 +1,18 @@
 import axios from 'axios'
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const token = AsyncStorage.getItem('token')
 
 const api = axios.create({
-    baseURL: 'http://localhost:5001/',
+    baseURL: 'https://192.168.1.15:5001/',
     headers: {
-        'Access-Control-Allow-Origin': '*',
+        // 'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        'Accept-Encondig': 'gzip, deflate, br',
-        'Accept': 'application/vnd.api+json',
+        'Accept': '*/*',
+        // 'Authorization' : `Bearer ${token}`,
     }
 })
-api.interceptors.request.use(config => {
-    const token = AsyncStorage.getItem('token')
-    if(token){
-        config.headers.delete['Authorization'] =  `Bearer ${token}`;
-        config.headers.head['Authorization'] =  `Bearer ${token}`;
-        config.headers.post['Authorization'] =  `Bearer ${token}`;
-        config.headers.get['Authorization'] =  `Bearer ${token}`;
-        config.headers.put['Authorization'] =  `Bearer ${token}`;
-        config.headers.patch['Authorization'] =  `Bearer ${token}`;
-    }
 
-    return config;
-});
 
 
 export default api

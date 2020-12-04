@@ -3,6 +3,7 @@ import api from "./api";
 class AuthLogin {
 
     async register(body) {
+        console.log('test', body)
         return api.post(`api/auth/register`, body)
     }
     async login(body) {

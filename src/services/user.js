@@ -3,18 +3,10 @@ import { AsyncStorage } from "react-native";
 import api from "./api";
 class User {
 
-    async completeRegisterBand(body) {
-        return api.post(`api/banda/cadastro-perfil`, body)
+    async getAgenda() {
+        return api.get(`api/user/agenda`)
     }
-    async completeRegisterEstablishment(body) {
-        return api.post(`api/banda/estabelecimento`, body)
-    }
-    async getByTokenBand() {
-        return api.get(`api/banda/perfil`)
-    }
-    async searchBand(query) {
-        return api.get(`api/banda/search`, query)
-    }
+
     async getUser(){
         return AsyncStorage.getItem('User')
     }

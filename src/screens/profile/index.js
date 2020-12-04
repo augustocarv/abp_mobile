@@ -8,7 +8,7 @@ import BandProfile from "./utils/bandProfile";
 import EstablishmentProfile from "./utils/establishmentProfile";
 
 const ProfileScreen = ({ navigation }) => {
-  const [role, setRole] = React.useState(0);
+  const [role, setRole] = React.useState(1);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
