@@ -9,12 +9,12 @@ const HomeScreen = ({navigation}) => (
     <Logo />
     <Header>Bem vindo ao FindBand!</Header>
 
-    <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
+    <Button mode="contained" onPress={() => navigation.navigate('Login')}>
       Login
     </Button>
     <Button
       mode="outlined"
-      onPress={() => navigation.navigate('SignUpScreen')}
+      onPress={() => navigation.navigate('SignUp')}
     >
       Cadastro
     </Button>

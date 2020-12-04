@@ -9,8 +9,11 @@ import {
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Card } from "react-native-paper";
 import moment from "moment";
+import { useNavigation } from '@react-navigation/native'
+
 import AppBar from "../../components/appbar";
 import { userService } from "../../services/user";
+import Dropdown from "../../components/dropdown";
 LocaleConfig.locales["pt-br"] = {
   monthNames: [
     "Janeiro",
@@ -56,12 +59,14 @@ LocaleConfig.locales["pt-br"] = {
 LocaleConfig.defaultLocale = "pt-br";
 
 const CalendarScreen = ({ navigation }) => {
+  const nav = useNavigation();
+
   const [selected, setSelected] = useState("");
   const [dates, setDates] = useState([])
   const onDayPress = useCallback(
     (day) => {
       setSelected(day.dateString);
-      navigation.navigate(`ScheduleScreen`, { date: day.dateString });
+      navigation.navigate(`Schedule`, { date: day.dateString });
     },
     [])
   const onInit = useCallback(
@@ -78,11 +83,13 @@ const CalendarScreen = ({ navigation }) => {
 
   useEffect(() => {
     onInit()
+    nav.setOptions({
+      headerRight: () => <Dropdown navigation={navigation}/>,
+    });
   }, [onInit])
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} testID={"menu"}>
-      <AppBar home={true} navigation={navigation} />
       <Calendar
         testID={"first_calendar"}
         current={moment(new Date()).format("YYYY-MM-DD")}

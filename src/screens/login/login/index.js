@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
                 // })
                 // const body = {role: 0, username: 'Teste'}
                 // await AsyncStorage.setItem('token', result.data.token)
-                navigation.navigate('CalendarScreen')
+                navigation.navigate('Calendar')
 
             } catch (error) {
                 alert(error.response.data)
@@ -45,10 +45,7 @@ const LoginScreen = ({ navigation }) => {
     return (
         <Background>
             <View>
-                <BackButton goBack={() => navigation.navigate('HomeScreen')} />
-            </View>
-            <View>
-                <View style={{textAlign:"center", marginTop: 60, alignSelf:"center"}}>
+                <View style={{textAlign:"center", marginTop: 50, alignSelf:"center"}}>
                     <Logo/>
                 </View>
                 <Text style={styles.text}>

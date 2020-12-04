@@ -12,7 +12,6 @@ const ProfileScreen = ({ navigation }) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <AppBar onlyGoBack={true} navigation={navigation} />
       {role === 1 ? <EstablishmentProfile navigation={navigation} /> : <BandProfile navigation={navigation} />}
     </ScrollView>
   );

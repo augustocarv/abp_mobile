@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { StyleSheet, View, ScrollView, Text } from "react-native";
-import { Card, Searchbar, Button, TextInput } from "react-native-paper";
+import { Card, Searchbar, TextInput } from "react-native-paper";
 import AppBar from "../../components/appbar";
 import { bandService } from "../../services/band";
-
+import Button from '../../components/button'
 const FindScreen = ({ route, navigation }) => {
   const [search, setSearch] = useState('');
   const [hour, setHour] = useState(null)
@@ -36,7 +36,7 @@ const FindScreen = ({ route, navigation }) => {
 
   const onAdd = useCallback(() => {
     try{
-      navigation.navigate('ScheduleScreen')
+      navigation.navigate('Schedule')
     }catch (error) {
 
     }
@@ -45,26 +45,7 @@ const FindScreen = ({ route, navigation }) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <AppBar onlyGoBack={true} navigation={navigation} />
       <View style={{ marginTop: 10 }}>
-      <TextInput
-          mode="flat"
-          style={{width:'85%', marginLeft: 30, marginBottom: 25}}
-          label="Hora Inicio"
-          value={hour}
-          maxLength={4}
-          keyboardType="number-pad"
-          onChangeText={setHour}
-        />
-      <TextInput
-          mode="flat"
-          style={{width:'85%', marginLeft: 30}}
-          label="Hora Final"
-          value={dataFim}
-          maxLength={4}
-          keyboardType="number-pad"
-          onChangeText={setDataFim}
-        />
         <View style={{ display: 'flex', flexDirection:'row', margin: 30, color: "white", fontSize: 20 }}>
         <TextInput
           mode="flat"
@@ -74,7 +55,7 @@ const FindScreen = ({ route, navigation }) => {
           onChangeText={setSearch}
         />
         </View>
-          <Button color="white" style={{marginBottom: 25}} onPress={onChange} ><Text>Procurar</Text></Button>
+          <Button mode="contained" style={{marginBottom: 60, width: '50%', alignSelf:'center'}} onPress={onChange}> Procurar </Button>
         {shows.length ?
           shows.map((item) => (
             <Card

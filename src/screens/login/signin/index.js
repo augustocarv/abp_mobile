@@ -36,7 +36,7 @@ const RegisterScreen = ({ navigation }) => {
       }
       const result = await authService.register(body)
       console.log(result)
-      navigation.navigate("LoginScreen");
+      navigation.navigate("Login");
     } catch (error) {
       console.log(error)
     }
@@ -45,11 +45,8 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <Background>
       <View>
-        <BackButton goBack={() => navigation.navigate("HomeScreen")} />
-      </View>
-      <View>
         <View
-          style={{ textAlign: "center", marginTop: 60, alignSelf: "center" }}
+          style={{ textAlign: "center", marginTop: 50, alignSelf: "center" }}
         >
           <Logo />
         </View>

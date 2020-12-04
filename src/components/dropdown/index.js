@@ -8,10 +8,10 @@ const Dropdown = ({ navigation }) => {
   const openMenu = () => setVisible(true);
 
   const closeMenu = () => setVisible(false);
-
+  console.log(navigation)
   const onLogout = React.useCallback(() => {
     AsyncStorage.clear();
-    navigation.navigate("HomeScreen");
+    navigation.navigate("Home");
     setVisible(false)
   }, []);
 
@@ -20,12 +20,10 @@ const Dropdown = ({ navigation }) => {
       visible={visible}
       onDismiss={closeMenu}
       anchor={
-        <Text style={{ marginTop: 25, color:'white' }} onPress={openMenu}>
-          Avatar
-        </Text>
+        <Button icon="account-circle" labelStyle={{fontSize: 22, marginLeft: 10}} style={{marginLeft: 15}} color="white" onPress={openMenu}/>
       }
     >
-      <Menu.Item onPress={() => [navigation.navigate("ProfileScreen"), setVisible(false)]} title="Perfil" />
+      <Menu.Item onPress={() => [navigation.navigate("Profile"), setVisible(false)]} title="Perfil" />
       <Menu.Item onPress={onLogout} title="Logout" />
     </Menu>
   );

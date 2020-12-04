@@ -5,7 +5,10 @@ import ButtonBack from "../../../components/backbutton";
 import moment from "moment";
 import AppBar from "../../../components/appbar";
 import { establishmentService } from '../../../services/establishment'
+import { useNavigation } from '@react-navigation/native'
+
 const ScheduleScreen = ({ route, navigation }) => {
+  const nav = useNavigation();
   const { date } = route.params;
   const role = 0
   const [shows, setShows] = useState(moment(date).format("LL") === moment(new Date()).format("LL") ? role === 1 ?
@@ -21,19 +24,19 @@ const ScheduleScreen = ({ route, navigation }) => {
         band: "Djávu",
         hourStart: '19h:00',
         hourFinish: '22h:00',
-        style:'Sertanejo'
+        style: 'Sertanejo'
       },
       {
         band: "Calcinha Preta",
         hourStart: '18h:00',
         hourFinish: '19h:00',
-        style:'MBP'
+        style: 'MBP'
       },
     ] : []
-    );
+  );
   const onAdd = useCallback(
     () => {
-      navigation.navigate('FindScreen')
+      navigation.navigate('Find')
     },
     [],
   )
@@ -57,10 +60,14 @@ const ScheduleScreen = ({ route, navigation }) => {
   )
   useEffect(() => {
     onInit()
+    nav.setOptions({
+      headerRight: () => (
+        <Button icon="plus-circle" labelStyle={{fontSize: 22, marginLeft: 10}} style={{marginLeft: 15}} color="white" onPress={onAdd}/>
+      )
+    });
   }, [onInit])
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <AppBar add={true} onAdd={onAdd} navigation={navigation} />
       <View style={{ marginTop: 10 }}>
         <Text style={{ margin: 30, color: "white", fontSize: 20 }}>
           {moment(date).format("LL")}
