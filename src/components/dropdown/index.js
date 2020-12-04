@@ -8,7 +8,6 @@ const Dropdown = ({ navigation }) => {
   const openMenu = () => setVisible(true);
 
   const closeMenu = () => setVisible(false);
-  console.log(navigation)
   const onLogout = React.useCallback(() => {
     AsyncStorage.clear();
     navigation.navigate("Home");
